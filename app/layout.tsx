@@ -7,8 +7,11 @@ import { Toaster } from 'sonner'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'convex_ai',
-  description: 'The connected workspace where better, faster work happens.',
+  title: 'Podcastr',
+  description: 'Generate your podcasts using AI.',
+  icons: {
+    icon: '/icons/logo.svg',
+  },
 }
 
 export default function RootLayout({
