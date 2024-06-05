@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/providers/ThemeProvider'
 import { Toaster } from 'sonner'
+import ConvexClerkProvider from '@/providers/ConvexClerkProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,19 +21,21 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>
-      <body className={`${inter.className} ${'theme-orange'}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Toaster richColors position="bottom-right" />
+    <ConvexClerkProvider>
+      <html lang="en" suppressHydrationWarning={true}>
+        <body className={`${inter.className} ${'theme-orange'}`}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Toaster richColors position="bottom-right" />
 
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </ConvexClerkProvider>
   )
 }
