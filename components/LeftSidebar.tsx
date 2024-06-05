@@ -13,8 +13,11 @@ export const Leftsidebar = () => {
     <section className="left_sidebar">
       <nav className="flex flex-col gap-6">
         <Link href="/" className="flex cursor-pointer items-center gap-1 pb-10">
-          <Image src="/icons/logo.svg" alt="logo" width={23} height={27} />
-          <h1 className="text-24 font-extrabold text-white max-lg:hidden max-lg:justify-center">
+          <div className="pl-5 lg:pl-2">
+            <Image src="/icons/logo.svg" alt="logo" width={23} height={27} />
+          </div>
+
+          <h1 className="text-24 text-white font-extrabold max-lg:hidden max-lg:justify-center">
             Podcastr
           </h1>
         </Link>
@@ -27,9 +30,9 @@ export const Leftsidebar = () => {
               href={route}
               key={label}
               className={cn(
-                'flex items-center justify-center gap-3 py-4 max-lg:px-4 lg:justify-start',
+                'flex items-center justify-center gap-3 py-4 max-lg:px-4 md:justify-start',
                 {
-                  'bg-nav-focus border-orange-1 border-r-4': isActive,
+                  'border-r-4 border-orange-1 bg-nav-focus': isActive,
                 }
               )}
             >

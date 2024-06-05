@@ -25,6 +25,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'files.edgestore.dev',
       },
+      {
+        protocol: 'https',
+        hostname: 'lovely-flamingo-139.convex.cloud',
+      },
     ],
   },
 }
