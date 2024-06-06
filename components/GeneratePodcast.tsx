@@ -5,16 +5,20 @@ import { Label } from './ui/label'
 import { Textarea } from './ui/textarea'
 import { Button } from './ui/button'
 import { Loader } from 'lucide-react'
+import { useState } from 'react'
 
-export const GeneratePodcast = ({
-  setAudio,
-  voiceType,
-  audio,
-  voicePrompt,
-  setVoicePrompt,
-  setAudioDuration,
-  setAudioStorageId,
-}: GeneratePodcastProps) => {
+const useGeneratePodcast = (props: GeneratePodcastProps) => {
+  const [isGenerating, setIsGenerating] = useState(false)
+  //Logic for podcast generation
+  const generatePodcast = async () => {}
+  return {
+    isGenerating,
+    generatePodcast,
+  }
+}
+
+export const GeneratePodcast = (props: GeneratePodcastProps) => {
+  const { isGenerating, generatePodcast } = useGeneratePodcast(props)
   return (
     <div>
       <div className="flex flex-col gap-2.5">
@@ -25,19 +29,36 @@ export const GeneratePodcast = ({
           className="input-class font-light focus-visible:ring-offset-orange-1"
           placeholder="Provide text to generate audio"
           rows={5}
-          value={voicePrompt}
-          onChange={(e) => setVoicePrompt(e.target.value)}
+          value={props.voicePrompt}
+          onChange={(e) => props.setVoicePrompt(e.target.value)}
         />
       </div>
       <div className="mt-5 w-full max-w-[200px]">
         <Button
-          type="submit"
           className="text-16 bg-orange-1 py-4 font-bold text-white-1"
-          onClick={() => {}}
+          type="submit"
         >
-          Generate
+          {isGenerating ? (
+            <>
+              Generating
+              <Loader size={20} className="ml-2 animate-spin" />
+            </>
+          ) : (
+            'Generate'
+          )}
         </Button>
       </div>
+      {props.audio && (
+        <audio
+          controls
+          src={props.audio}
+          autoPlay
+          className="mt-5"
+          onLoadedMetadata={(e) =>
+            props.setAudioDuration(e.currentTarget.duration)
+          }
+        />
+      )}
     </div>
   )
 }
