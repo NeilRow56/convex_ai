@@ -22,7 +22,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
               <MobileNav />
             </div>
             <div className="flex flex-col md:pb-14">
-              <Toaster />
+              <Toaster richColors position="bottom-right" />
               {children}
             </div>
           </div>
